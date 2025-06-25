@@ -41,7 +41,7 @@ export default function Contact({ accentColor }){
           </button>
         </form>
 
-        <p className="text-center text-lightText text-lg mb-4">Feel free to reach out! I'd love to connect, collaborate, or chat about projects and ideas. If you have a question or just want to say hello, message me on my social media spaces.</p>
+        <p className="text-center text-lightText text-lg mb-4">Feel free to reach out! I&apos;d love to connect, collaborate, or chat about projects and ideas. If you have a question or just want to say hello, message me on my social media spaces.</p>
         <div className="text-center flex justify-center gap-6 social-icons">
           <Link href="https://github.com/Kartellxrd16" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-lightText hover:text-accentTeal transition duration-200">
             <Github size={40} />

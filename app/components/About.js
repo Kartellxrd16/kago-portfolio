@@ -1,4 +1,6 @@
 'use client';
+import Image from 'next/image'; // Import the Image component
+
 export default function About ({ accentColor }) {
   return (
     <section id="about" className="p-8 md:p-16 bg-darkBg text-lightText flex flex-col items-center relative overflow-hidden">
@@ -6,17 +8,25 @@ export default function About ({ accentColor }) {
         About Me
       </h2>
       <div className="max-w-3xl text-center">
-        <img src="/kago.jpeg" alt="Kago Phuthego" className="rounded-full w-32 h-32 mb-6 object-cover mx-auto border-2 border-accentTeal shadow-lg shadow-accentTeal/50" />
+        {/* Changed <img> to <Image /> */}
+        <Image
+          src="/kago.jpeg" // Path to your image
+          alt="Kago Phuthego"
+          width={128} // Specify the intrinsic width of your image (w-32 is 128px in default Tailwind scale)
+          height={128} // Specify the intrinsic height of your image (h-32 is 128px in default Tailwind scale)
+          className="rounded-full w-32 h-32 object-cover mx-auto border-2 border-accentTeal shadow-lg shadow-accentTeal/50"
+          priority // Add priority if this image is visible on first load (which it likely is)
+        />
         <p className="text-midText text-lg leading-relaxed">
-          Hello! I'm Kago Phuthego, a passionate 
-          <span className="font-bold hover:text-lightText transition duration-300 ease-in-out cursor-pointer" style={{ color: accentColor }}> Junior Web Developer</span> 
+          Hello! I&apos;m Kago Phuthego...
+          <span className="font-bold hover:text-lightText transition duration-300 ease-in-out cursor-pointer" style={{ color: accentColor }}> Junior Web Developer</span>
           based in Botswana. I enjoy turning ideas into reality through code and creating visually appealing and user-friendly websites.
         </p>
         <p className="text-midText text-lg leading-relaxed mt-4">
           I have a solid foundation in front-end technologies and am eager to learn and grow in the ever-evolving world of web development. My goal is to build impactful and accessible web solutions that make a difference.
         </p>
         <p className="text-midText text-lg leading-relaxed mt-4">
-          When I'm not coding, you can find me exploring new tech trends, contributing to open-source projects, or enjoying a good book. I'm always open to collaborating on exciting projects and connecting with fellow developers!
+          When I&apos;m not coding, you can find me exploring new tech trends, contributing to open-source projects, or enjoying a good book. I&apos;m always open to collaborating on exciting projects and connecting with fellow developers!
         </p>
       </div>
       <div className="bubbles">
@@ -36,7 +46,7 @@ export default function About ({ accentColor }) {
         .bubble {
           position: absolute;
           bottom: -50px;
-          background: ${accentColor}; 
+          background: ${accentColor};
           border-radius: 50%;
           animation: rise 20s infinite;
         }
