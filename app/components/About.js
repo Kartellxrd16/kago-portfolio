@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image'; 
 
 export default function About ({ accentColor }) {
   return (
@@ -8,19 +8,19 @@ export default function About ({ accentColor }) {
         About Me
       </h2>
       <div className="max-w-3xl text-center">
-        {/* Changed <img> to <Image /> */}
-        <Image
-          src="/kago.jpeg" // Path to your image
+      
+          <Image
+          src="/kago.jpeg" 
           alt="Kago Phuthego"
-          width={128} // Specify the intrinsic width of your image (w-32 is 128px in default Tailwind scale)
-          height={128} // Specify the intrinsic height of your image (h-32 is 128px in default Tailwind scale)
-          className="rounded-full w-32 h-32 object-cover mx-auto border-2 border-accentTeal shadow-lg shadow-accentTeal/50"
-          priority // Add priority if this image is visible on first load (which it likely is)
+          width={160} 
+          height={160} 
+          className="rounded-full w-40 h-40 object-cover mx-auto border-2 border-accentTeal shadow-lg shadow-accentTeal/50" 
+          priority 
         />
         <p className="text-midText text-lg leading-relaxed">
           Hello! I&apos;m Kago Phuthego...
-          <span className="font-bold hover:text-lightText transition duration-300 ease-in-out cursor-pointer" style={{ color: accentColor }}> Junior Web Developer</span>
-          based in Botswana. I enjoy turning ideas into reality through code and creating visually appealing and user-friendly websites.
+          <span className="font-bold hover:text-lightText transition duration-300 ease-in-out cursor-pointer" style={{ color: accentColor }}> Junior Web Developer </span>
+           based in Botswana. I enjoy turning ideas into reality through code and creating visually appealing and user-friendly websites.
         </p>
         <p className="text-midText text-lg leading-relaxed mt-4">
           I have a solid foundation in front-end technologies and am eager to learn and grow in the ever-evolving world of web development. My goal is to build impactful and accessible web solutions that make a difference.

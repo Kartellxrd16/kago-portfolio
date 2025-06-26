@@ -1,4 +1,3 @@
-// components/Navbar.js
 import Link from "next/link";
 
 const logoSrc = "/logo1.png"; 

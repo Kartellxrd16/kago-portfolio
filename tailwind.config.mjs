@@ -1,4 +1,3 @@
-// tailwind.config.mjs
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -14,8 +13,9 @@ export default {
         lightText: '#E2E8F0',
         midText: '#A0AEC0',
         accentTeal: '#00BCD4',
+        'accentTeal-dark': '#0097A7', 
       },
     },
   },
-  plugins: [], 
+  plugins: [],
 };

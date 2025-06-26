@@ -2,7 +2,7 @@
 import React from 'react'; 
 import ProjectCard from './ProjectCard'; 
 
-const Projects = ({ projects, accentColor }) => {
+export default function Projects ({ projects, accentColor }){
   return (
     <section id="projects" className="p-8 md:p-16 bg-darkBg text-lightText">
       <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-lightText" style={{ color: accentColor }}>My Projects</h2>
@@ -15,4 +15,3 @@ const Projects = ({ projects, accentColor }) => {
   );
 };
 
-export default Projects;
