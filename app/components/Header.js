@@ -10,31 +10,26 @@ export default function Header({ name, title, accentColor }) {
   const [hasAnimated, setHasAnimated] = useState(false); 
 
   
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-         
-          if (entry.isIntersecting && !hasAnimated) {
-            setIsVisible(true);
-            setHasAnimated(true); 
-            observer.unobserve(entry.target); 
-          }
-        });
-      },
-      { threshold: 0.5 } 
-    );
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      // ...
+    },
+    { threshold: 0.5 }
+  );
 
-    if (headerRef.current) {
-      observer.observe(headerRef.current);
+  const currentRef = headerRef.current; // Capture the current ref value here
+
+  if (currentRef) { // Use the captured value
+    observer.observe(currentRef);
+  }
+
+  return () => {
+    if (currentRef) { // Use the captured value in cleanup
+      observer.unobserve(currentRef);
     }
-
-    return () => {
-      if (headerRef.current) {
-        observer.unobserve(headerRef.current);
-      }
-    };
-  }, [hasAnimated]); 
+  };
+}, [hasAnimated]);
 
   return (
     <div ref={headerRef} className="w-full flex flex-col justify-center items-center p-8 md:p-20 relative h-screen bg-darkBg text-lightText">

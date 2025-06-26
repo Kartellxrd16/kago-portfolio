@@ -1,18 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 
-const logoSrc = "/logo1.png"; 
+
 
 export default function Navbar(){
     return(
         
         <div className="navbar bg-darkBg text-lightText">
                 <Link href="/" className="flex items-center"> 
-                    <img 
-                        src={logoSrc} 
+                    <Image 
+                        src='/logo1.png' 
                         alt="Logo" 
-                        className="logo" 
-                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150x50/0000FF/FFFFFF?text=BTU+Logo"; }}
+                        width={50}
+                        height={50}
+                        priority
                     />
+ 
                 </Link>
                 <ul> 
                     <li className="nav-link">

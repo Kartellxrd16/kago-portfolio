@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react'; 
 
-export default function({ project, accentColor }){
+export default function ProjectCard({ project, accentColor }){
   if (!project) {
     return null;
   }
