@@ -1,11 +1,11 @@
 'use client';
-import Header from './components/Header';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
+import Header from './frontend/components/Header';
+import About from './frontend/components/About';
+import Skills from './frontend/components/Skills';
+import Projects from './frontend/components/Projects';
+import Contact from './frontend/components/Contact';
+import Footer from './frontend/components/Footer';
+import Navbar from './frontend/components/Navbar';
 import { FileCode, Palette, SquareStack, Code, Database ,Briefcase,Layout, Globe } from 'lucide-react';
 
 
