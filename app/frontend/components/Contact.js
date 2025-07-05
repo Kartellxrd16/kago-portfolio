@@ -1,4 +1,3 @@
-// app/frontend/components/Contact.js
 'use client';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import Link from 'next/link';
@@ -11,15 +10,12 @@ export default function Contact({ accentColor }) {
     const [message, setMessage] = useState('');
     const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', 'submitting', null
 
-    // Remove isFormDisabled if you want the form to be interactive
-     const isFormDisabled = true;
-
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission (which would use mailto:)
+        e.preventDefault();
         setSubmitStatus('submitting');
 
         try {
-            const res = await fetch('/api/contact', { // Endpoint on your FastAPI backend
+            const res = await fetch('http://localhost:8000/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,35 +23,39 @@ export default function Contact({ accentColor }) {
                 body: JSON.stringify({ name, email, message }),
             });
 
-            if (res.ok) {
-                setSubmitStatus('success');
-                // Clear the form
-                setName('');
-                setEmail('');
-                setMessage('');
-                setShowMessage(false); // Optionally hide the initial notice after success
-            } else {
+            if (!res.ok) {
                 const errorData = await res.json();
                 console.error('Submission error:', errorData);
                 setSubmitStatus('error');
+                return;
             }
+
+            setSubmitStatus('success');
+            // Clear the form
+            setName('');
+            setEmail('');
+            setMessage('');
+            setShowMessage(false);
         } catch (error) {
-            console.error('Network or unexpected error:', error);
+            console.error('Network error:', error);
             setSubmitStatus('error');
         }
     };
 
     return (
         <section id="contact" className="p-8 md:p-16 bg-darkBg text-lightText">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-lightText" style={{ color: accentColor }}>Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center" style={{ color: accentColor }}>Get In Touch</h2>
 
             <div className="max-w-xl mx-auto space-y-6">
                 {showMessage && (
                     <div className="bg-darkCard border border-accentTeal text-lightText px-4 py-3 rounded relative mb-6" role="alert">
                         <strong className="font-bold" style={{ color: accentColor }}>Notice:</strong>
-                        <span className="block sm:inline ml-2">Contact form is currently under maintenance. Please use social links for now.</span>
+                        <span className="block sm:inline ml-2">Feel free to contact me!</span>
                         <span className="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onClick={() => setShowMessage(false)}>
-                            <svg className="fill-current h-6 w-6 text-lightText hover:text-accentTeal" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 2.63a1.2 1.2 0 1 1-1.697-1.697l2.758-2.758-2.758-2.757a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-2.651a1.2 1.2 0 1 1 1.697 1.697l-2.758 2.758 2.758 2.757a1.2 1.2 0 0 1 0 1.697z"/></svg>
+                            <svg className="fill-current h-6 w-6 text-lightText hover:text-accentTeal" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <title>Close</title>
+                                <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 2.63a1.2 1.2 0 1 1-1.697-1.697l2.758-2.758-2.758-2.757a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-2.651a1.2 1.2 0 1 1 1.697 1.697l-2.758 2.758 2.758 2.757a1.2 1.2 0 0 1 0 1.697z"/>
+                            </svg>
                         </span>
                     </div>
                 )}
@@ -85,7 +85,6 @@ export default function Contact({ accentColor }) {
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                             disabled={isFormDisabled} 
                         />
                     </div>
                     <div>
@@ -98,7 +97,6 @@ export default function Contact({ accentColor }) {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            // disabled={isFormDisabled} // Re-enable by commenting out or removing
                         />
                     </div>
                     <div>
@@ -111,7 +109,6 @@ export default function Contact({ accentColor }) {
                             required
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            // disabled={isFormDisabled} // Re-enable by commenting out or removing
                         ></textarea>
                     </div>
                     <button
